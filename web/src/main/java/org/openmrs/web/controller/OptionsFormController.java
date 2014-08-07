@@ -332,7 +332,7 @@ public class OptionsFormController extends SimpleFormController {
 					httpSession.removeAttribute("resetPassword");
 				map.put("resetPassword", resetPassword);
 				
-			}finally {
+			} finally {
 				Context.removeProxyPrivilege("View Users");
 			}
 		}
