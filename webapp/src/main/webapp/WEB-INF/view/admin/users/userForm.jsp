@@ -6,7 +6,7 @@
 <%@ include file="localHeader.jsp" %>
 
 <c:if test="${empty user.userProperties['defaultLocation']}">
-	<c:set target="${user.userProperties}" property="defaultLocation" value="${authLocation} }"/>
+	<c:set target="${user.userProperties}" property="defaultLocation" value="${authLocation}"/>
 	</c:if>
  
 <c:set var="errorsFromPreviousSubmit" value="false"/>
@@ -249,9 +249,13 @@ $j(document).ready(function () {
 								<c:forEach var="userProp" items="${user.userProperties}" varStatus="status">
 									<tr class='${status.index % 2 == 0 ? "evenRow" : "oddRow"}'>
 										<td valign="top">
-											<input type="hidden" name="property"
-												value="${userProp.key}" maxlength="250" />
-											${userProp.key}:
+											<input type="hidden" name="property" value="${userProp.key}" maxlength="250" />
+											<c:if test="${userProp.key == 'defaultLocation'}" >
+												Default Location:
+											</c:if>
+											<c:if test="${userProp.key != 'defaultLocation'}" >
+												${userProp.key}:
+											</c:if>
 										</td>
 										<td valign="top">
 											<c:if test="${userProp.key == 'defaultLocation'}" >

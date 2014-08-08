@@ -293,7 +293,8 @@ public class OptionsFormController extends SimpleFormController {
 				opts.setNotification(props.get(OpenmrsConstants.USER_PROPERTY_NOTIFICATION));
 				opts.setNotificationAddress(props.get(OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS));
 				
-			} finally {
+			}
+			finally {
 				Context.removeProxyPrivilege("View Users");
 			}
 		}
@@ -314,7 +315,7 @@ public class OptionsFormController extends SimpleFormController {
 		
 		if (Context.isAuthenticated()) {
 			
-					try {
+			try {
 				Context.addProxyPrivilege("View Users");
 				
 				LocationService ls = Context.getLocationService();
@@ -332,11 +333,11 @@ public class OptionsFormController extends SimpleFormController {
 					httpSession.removeAttribute("resetPassword");
 				map.put("resetPassword", resetPassword);
 				
-			} finally {
+			}
+			finally {
 				Context.removeProxyPrivilege("View Users");
 			}
 		}
-		
 		return map;
 	}
 }
